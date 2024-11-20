@@ -17,7 +17,7 @@ The following applications are required for implementing the _AutomatedLinkAccep
 - [MediatorManager](https://github.com/openBackhaul/MediatorManager)  
 - [LinkIdIntoLtpWriter](https://github.com/openBackhaul/LinkIdIntoLtpWriter)  
 - [MicroWaveDeviceGatekeeper](https://github.com/openBackhaul/MicroWaveDeviceGatekeeper)  
-- PerformanceManagement  
+- [PerformanceManagement](https://github.com/openBackhaul/PerformanceManagement)  
 - [AccessPlanningToolProxy](https://github.com/openBackhaul/AccessPlanningToolProxy)  
 - [MicroWaveDeviceInventory](https://github.com/openBackhaul/MicroWaveDeviceInventory)
 
