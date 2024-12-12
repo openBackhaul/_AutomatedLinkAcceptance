@@ -1,0 +1,40 @@
+@startgantt AutomatedLinkAcceptanceDependencies
+
+title
+Automated Link Acceptance Dependencies
+end title
+
+-- Platform --
+[Mediators\nTR-532v2] as [Med] lasts 5 days
+[MediatorInstanceManager\n1.0.0] lasts 10 days
+[OpenDaylight\nChlorine] as [ODL] lasts 6 days
+  [ODL] starts with [Med]'s end
+[TinyApplicationController\n2.1.2] lasts 10 days
+[PerformanceManagement\n1.0.0] lasts 10 days
+
+-- HighPerformanceNetworkInterface --
+[MicroWaveDeviceInventory\n1.2.0] as [MWDI\n1.2.0] lasts 11 days
+  [MWDI\n1.2.0] starts with [ODL]'s end
+
+[MicroWaveDeviceGatekeeper\n1.0.1] as [MWDG\n1.0.1] lasts 11 days
+  [MWDG\n1.0.1] starts with [ODL]'s end
+
+-- AutomatedLinkAcceptance --
+[ConnectionPreparation\n1.0.0] as [CP1.0.0] lasts 9 days
+
+[LinkidIntoLtpWriter\n1.0.0] as [LILW1.0.0] lasts 8 days
+  [LILW1.0.0] starts with [MWDG\n1.0.1]'s end
+
+[MountingOrchestrator\n1.0.0] as [MO1.0.0] lasts 9 days
+  [MO1.0.0] starts with [CP1.0.0]'s end
+  [MO1.0.0] starts with [LILW1.0.0]'s end
+
+
+
+
+[MediatorManager\n1.0.0] lasts 7 days
+[AccessPlanningToolProxy\n1.2.0] lasts 10 days
+[AccessPlanningTool\n27.123.3] lasts 8 days
+
+
+@endgantt
