@@ -47,14 +47,15 @@ package "AutomatedLinkAcceptance 2.0" {
   component [PM\n1.0.0] as PM
   component [MWDG\n1.1.0] as MWDG
 
-  component [APTP\n1.1.0] as APTP
+  component [APTP\n1.2.0] as APTP
   component [MWDI\n1.2.0] as MWDI
   component [ODL\n] as ODL
 
   USER - GUI #LightSalmon
   GUI -> APT #LightSalmon : 1.0
 
-  APT -> MO #SkyBlue : 2.1
+  APT -> APTP #SkyBlue : 2.0
+  APTP -> MO #SkyBlue : 2.1
 
   MO -> ConnectionPreparation #SkyBlue : 2.2.1
   ConnectionPreparation ..> E_Device #SkyBlue : 2.2.2e
