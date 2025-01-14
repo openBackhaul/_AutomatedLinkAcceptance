@@ -1,23 +1,31 @@
 @startuml AutomatedLinkAcceptanceFlow
-
 skinparam componentStyle rectangle
 
 title
-UserDemand - AutomatedLinkAcceptance 2.0
+Mounting Procedure Overview
 end title
 
 actor USER as USER
 
-package "AutomatedLinkAcceptance 2.0" {
+
+
+  
+  package "AutomatedLinkAcceptance 2.0" {
+
   interface GUI as GUI
   USER -[hidden] GUI
   component [APT\n] as APT
   GUI -[hidden] APT
-  component [MO\n1.0.0] as MO
+  component [APTP\n1.2.0] as APTP
+
+  USER -> GUI #LightSalmon
+  GUI -> APT #LightSalmon : 1.0
+ component [MO\n1.0.0] as MO
   APT -[hidden] MO
+ 
+  component [ODL\n] as ODL
   component [Connection\nPreparation] as ConnectionPreparation
   MO -[hidden] ConnectionPreparation
-
   component [MM\n1.0.0] as MM
   MO -[hidden]- MM
   component [E_Mediator\nManager] as E_MediatorManager
@@ -42,17 +50,13 @@ package "AutomatedLinkAcceptance 2.0" {
   component [ALC+2e\netc.] as S_Device 
   S_MediatorInstance -[hidden] S_Device
   H_Device -[hidden]- S_Device
-
-  component [LILW\n1.0.0] as LILW
   component [PM\n1.0.0] as PM
+  component [LILW\n1.0.0] as LILW
+   MO -[hidden] LILW
   component [MWDG\n1.1.0] as MWDG
-
-  component [APTP\n1.2.0] as APTP
-  component [MWDI\n1.2.0] as MWDI
-  component [ODL\n] as ODL
-
-  USER - GUI #LightSalmon
-  GUI -> APT #LightSalmon : 1.0
+   LILW -[hidden] MWDG
+  component [MWDI\n1.1.0] as MWDI
+   MO -[hidden] MWDI
 
   APT -> APTP #SkyBlue : 2.0
   APTP -> MO #SkyBlue : 2.1
@@ -72,19 +76,22 @@ package "AutomatedLinkAcceptance 2.0" {
 
   MO -> ODL #SkyBlue : 2.4
 
-  MO -> LILW #SkyBlue : 2.5.1
-  LILW -> MWDG #SkyBlue : 2.5.2
+  MO --> LILW #SkyBlue : 2.5.1
+  LILW -down-> MWDG #SkyBlue : 2.5.2
   MWDG -> ODL #SkyBlue : 2.5.3
 
-  MO -> PM #SkyBlue : 2.6
 
   ODL -> E_MediatorInstance #SkyBlue : 2.5.4e
-  ODL -> H_MediatorInstance #SkyBlue : 2.5.4h
+  ODL -> H_MediatorInstance #SkyBlue: 2.5.4h
   ODL -> S_MediatorInstance #SkyBlue : 2.5.4s
   E_MediatorInstance -> E_Device #SkyBlue : 2.5.5e
   H_MediatorInstance -> H_Device #SkyBlue : 2.5.5h
   S_MediatorInstance -> S_Device #SkyBlue : 2.5.5s
 
+  MO -up-> MWDG #SkyBlue : 2.6
+  MO -up-> MWDG #SkyBlue : 2.7
+  MO -up-> MWDI #SkyBlue : 2.8
+  MO -up-> PM #SkyBlue : 2.9
 
   APT --> APTP #LightSalmon : 3.1
   APTP -> MWDI #LightSalmon : 3.2
@@ -96,6 +103,7 @@ package "AutomatedLinkAcceptance 2.0" {
   H_MediatorInstance -> H_Device #LightSalmon : 3.5h
   S_MediatorInstance -> S_Device #LightSalmon : 3.5s
 
-}
+
+  }
 
 @enduml
