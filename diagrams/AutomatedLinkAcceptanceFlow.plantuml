@@ -2,7 +2,7 @@
 skinparam componentStyle rectangle
 
 title
-Mounting Procedure Overview
+UserDemand - AutomatedLinkAcceptance 2.0
 end title
 
 actor USER as USER
