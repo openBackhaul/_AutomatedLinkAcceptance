@@ -1,8 +1,8 @@
 # Status
 
-The current structuring of the AutomatedMounting ...
+The former structuring of the AutomatedMounting ...
 
-![currentStructure](./diagrams/AutomatedLinkAcceptanceFlow.png)  
+![formerStructure](./diagrams/FormerStructure.png)  
 
 ... implements a linear process.  
 
