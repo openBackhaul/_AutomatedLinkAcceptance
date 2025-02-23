@@ -16,7 +16,6 @@ It fulfils a single purpose: Make a REST interface available for a new device.
 
 During discussing the MediatorManager, we saw that further function would be reasonable:  
 - Support of non-traffic-affecting mediator update  
-but the discussion about using load sharing for supporting a non-traffic-affecting mediator update has stopped as we saw that configuration on the device would be required, too.  
 ![MovingMediators](./diagrams/MovingMediators.png)  
 
 - Device configuration hygiene    
