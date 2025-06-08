@@ -1,4 +1,4 @@
-# Status
+# Linear Process
 
 The former structuring of the AutomatedMounting ...
 
@@ -21,26 +21,15 @@ During discussing the MediatorManager, we saw that further function would be rea
 - Device configuration hygiene    
 need for a separate application for cleaning up SDN configurations on the device has been documented into the roadmap  
 
-# Doubts
 
-We stopped the discussion about the load sharing due to concerns about the complexity of configuring the device.  
-In retrospective, this is hard to understand, because  
-- we are already doing the exact same configuration with the ConnectionPreparation application  
-- the existing script based solution are obviously imperfect as they are leaving a lot of obsolete configuration artifacts behind  
-- we already documented the need for additional configuring on the devices (cleaning up SDN configurations)  
+# New Concept  
 
-So, why not using the ConnectionPreparation for creating another SDN user on the device while balancing the load?  
-The ConnectionPreparation application could be equipped with services for deleting obsolete users, too.  
-![LateralRequest](./diagrams/LateralRequest.png)  
-Two applications, which are on the same level in the mounting process, but exchanging lateral requests, are causing first doubts on the architecture.  
+The former MediatorManager that was just for providing mediators will be expanded to a DeviceDomainManager, which will be responsible for providing and maintaining the transport of the management connection between NetconfClient at the MountPoint (inside the Controller) and device.  
 
-Functions for creating a new mediator on the least occupied VM, load balancing on the mediator VMs and cleaning up SDN configurations on the devices are all requiring an up-to-date list of the mediator processes and their status.  
-Separating functions that are operating on the same data into multiple applications, is increasing doubts on the architecture.  
+This shall include  
+- managing the mediatorProcesses,  
+- implementing load sharing in general, but also in case of a crash of a mediatorVM and for supporting mediator updates  
+- initiating the device configurations for the SNMP/Qx connections to the mediatorProcesses  
+- managing the NetconfClient configurations at the MountPoints (via ControllerDomainManager)  
+- cleaning up configuration artifacts on the devices and mediatorVms.  
 
-# New Idea  
-
-The current MediatorManager that is providing mediators could be expanded to a NetconfInterfaceManager providing and maintaining NetconfInterfaces.  
-It would manage the device configuration, too.  
-![NetconfInterfaceManager](./diagrams/NetconfInterfaceManager.png)  
-
-Connecting new devices, load balancing existing devices, cleaning the device configuration would be managed by the same application.  
